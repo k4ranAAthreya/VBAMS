@@ -98,7 +98,7 @@ echo "<script>alert('Email-id,Employee Id or Mobile Number already exist. Please
                                     </div>
                                     <div class="form-group">
                                         <label>Name</label>
-                                       <input type="text" class="form-control" id="exampleTextInput1" name="name" value="" required='true'>
+                                       <input type="char" class="form-control" id="exampleTextInput1" name="name" value="" required='true'>
                                     </div>
                                     <div class="form-group">
                                         <label>Mobile Number</label>

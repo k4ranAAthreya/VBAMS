@@ -67,7 +67,7 @@ echo "<script>alert('Invalid Details');</script>";
 				<div class="auth-box">
                     <div class="top">
                        
-                        <strong>Vehicle Assitance</strong> <span>Management System</span>
+                        <strong>Admin</strong> <span>Login page</span>
                     </div>
 					<div class="card">
                         <div class="header">

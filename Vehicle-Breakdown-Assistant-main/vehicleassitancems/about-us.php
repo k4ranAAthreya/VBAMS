@@ -125,17 +125,7 @@ foreach($results as $row)
                         <div class="about-us-info">
                             <p><?php  echo htmlentities($row->PageDescription);?></p>
                               <?php $cnt=$cnt+1;}} ?>
-                            <!-- about social start -->
-                            <div class="about-social">
-                                <ul>
-                                    <li><a href="#"> <i class="fa fa-facebook"></i> </a></li>
-                                    <li><a href="#"> <i class="fa fa-google-plus"></i> </a></li>
-                                    <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
-                                    <li><a href="#"> <i class="fa fa-instagram"></i> </a></li>
-                                    <li><a href="#"> <i class="fa fa-pinterest-p"></i> </a></li>
-                                </ul>
-                            </div>
-                            <!-- about social end -->
+                          
                         </div>
                         <!-- about content end -->
                     </div>

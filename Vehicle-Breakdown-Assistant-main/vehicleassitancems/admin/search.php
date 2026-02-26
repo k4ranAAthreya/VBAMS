@@ -74,24 +74,15 @@ $sdata=$_POST['searchdata'];
                                         <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                              <th>S.No</th>
-                                        <th>Booking Number</th>
-                                        <th>Name</th>
-                                        <th>Mobile Number</th>
-                                        <th>Email</th>
-                                    <th>Status</th>
-                                        <th>Action</th>
-                                            </tr>
-                                        </tfoot>
+                                        
                                         <tbody>
                                             <tr>
                                                <?php
                                                $did=$_SESSION['vamsdid'];
-$sql="SELECT * from  tblbook where BookingNumber like '$sdata%' || Name like '$sdata%' || PhoneNumber like '$sdata%'";
+$sql="SELECT * FROM tblbook WHERE BookingNumber LIKE :searchdata OR Name LIKE :searchdata OR PhoneNumber LIKE :searchdata";
 $query = $dbh -> prepare($sql);
-$query-> bindParam(':did', $did, PDO::PARAM_STR);
+$searchParam = "%$sdata%";
+$query-> bindParam(':searchdata', $searchParam, PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 

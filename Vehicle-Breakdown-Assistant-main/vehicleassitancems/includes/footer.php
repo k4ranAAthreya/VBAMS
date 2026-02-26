@@ -38,7 +38,7 @@ if($query->rowCount() > 0)
 foreach($results as $row)
 {               ?>
                                 <!-- small logo start -->
-                                <a href="index.php" class="footer-logo"> <strong style="color:white ;font-weight: bold;">Breakdown Buddy</strong> </a>
+                                <a href="index.php" class="footer-logo"> <strong style="color:white ;font-weight: bold;">BREAKDOWN BUDDY</strong> </a>
 
                                 <!-- small logo end -->
                                 <!-- address start -->
@@ -82,28 +82,7 @@ foreach($results as $row)
                         <!-- single footer end -->
                     </div>
                     <div class="col-md-2 col-md-offset-1 col-sm-3">
-                        <!-- single footer start -->
-                        <div class="single-footer-top">
-                            <!-- section title start -->
-                            <div class="footer-top-title">
-                                <h3>USEFULL LINKS</h3>
-                            </div>
-                            <!-- section title end -->
-                            <!-- footer menu start -->
-                            <div class="footer-top-menu">
-                                <ul>
-                                    <li class="has-sub"><a href="index.php">Home</a></li>
-                                            <!-- single menu -->
-                                            <li><a href="about-us.php">About us</a></li>
-                                            
-                                            <!-- single menu -->
-                                            <li><a href="contact.php">Contact Us</a></li>
-                                            <li><a href="booking-request.php">Send Request</a></li>
-                                </ul>
-                            </div>
-                            <!-- footer menu end -->
-                        </div>
-                        <!-- single footer end -->
+                       
                     </div>
                     
                 </div>

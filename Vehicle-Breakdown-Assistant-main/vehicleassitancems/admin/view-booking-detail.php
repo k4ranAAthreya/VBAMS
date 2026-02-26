@@ -111,6 +111,7 @@ foreach($results as $row)
     <td><?php  echo $row->PickupDate;?></td>
     
   </tr>
+
   <tr>
     <th >Assign To</th>
     <?php if($row->AssignTo==""){ ?>
@@ -156,8 +157,15 @@ if($row->Status=="")
   </tr>
 
   <?php $cnt=$cnt+1;}} ?>
+    <tr>
+    <th>Vehicle Type</th>
+    <td><?php  echo $row->VehicleType;?></td>
+    <th></th>
+    <td></td>
+</tr>
                                             
                                     </table>
+                                    
                                     <?php 
 $bookid=$_GET['bookid']; 
    if($status!=""){

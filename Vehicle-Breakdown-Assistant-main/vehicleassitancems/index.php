@@ -184,7 +184,7 @@ foreach($results as $row)
                         </div>
                         <!-- about content end -->
                     </div>
-                    <div class="col-md-6 hidden-xs">
+                    <div class="col-md-6 hidden-xs"></div>
                         <!-- about us img start -->
                         <div class="about-us-img">
                             <img src="img1/about/tow-truck-federal-way-2.jpg" alt="">
