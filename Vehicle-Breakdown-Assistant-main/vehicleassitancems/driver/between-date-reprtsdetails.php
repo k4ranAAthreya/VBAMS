@@ -63,25 +63,27 @@ $tdate=$_POST['todate'];
                                             </tr>
                                         </thead>
                                         <tfoot>
-                                            <tr>
-                                              <th>S.No</th>
-                                       <th>Work Assign</th>
-                                        <th>Completed Work</th>
-                                        <th>Remaining Work</th>
-                                            </tr>
+                                           
                                         </tfoot>
                                         <tbody>
                                            
                                                <?php
                                                $did=$_SESSION['vamsdid'];
 
+// Get driver name from session using driver ID
+$driverSql = "SELECT Name FROM tbldriver WHERE DriverID = :did LIMIT 1";
+$driverQuery = $dbh->prepare($driverSql);
+$driverQuery->bindParam(':did', $did, PDO::PARAM_STR);
+$driverQuery->execute();
+$driverData = $driverQuery->fetch(PDO::FETCH_OBJ);
+$driverName = $driverData ? $driverData->Name : '';
 
 $sql="SELECT  
 count(ID) as assigned,  
 count(if(tblbook.Status = 'Completed', 1, 0)) AS completed from  tblbook  
-where tblbook.AssignTo=:did && date(DateofRequest) between '$fdate' and '$tdate'";
+where tblbook.AssignTo=:driverName && date(DateofRequest) between '$fdate' and '$tdate'";
 $query = $dbh -> prepare($sql);
-$query-> bindParam(':did', $did, PDO::PARAM_STR);
+$query-> bindParam(':driverName', $driverName, PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 $cnt=1;

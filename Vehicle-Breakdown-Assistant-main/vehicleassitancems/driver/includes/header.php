@@ -8,7 +8,7 @@
 <nav class="navbar custom-navbar navbar-expand-lg py-2">
     <div class="container-fluid px-0">
         <a href="javascript:void(0);" class="menu_toggle"><i class="fa fa-align-left"></i></a>
-        <a href="dashboard.php" class="navbar-brand"><strong>Vehicle Breakdown</strong> Assistance</a>
+        <a href="dashboard.php" class="navbar-brand"><strong> Breakdown</strong> Buddy</a>
         <div id="navbar_main">
             <ul class="navbar-nav mr-auto hidden-xs">
                 <li class="nav-item page-header">
@@ -28,9 +28,17 @@
                         <div class="py-3 px-3">
                             <?php
           $did=$_SESSION['vamsdid'];
-$sql="SELECT * from tblbook  where Status='Approved' && AssignTo=:did";
+// Get driver name from session using driver ID
+$driverSql = "SELECT Name FROM tbldriver WHERE DriverID = :did LIMIT 1";
+$driverQuery = $dbh->prepare($driverSql);
+$driverQuery->bindParam(':did', $did, PDO::PARAM_STR);
+$driverQuery->execute();
+$driverData = $driverQuery->fetch(PDO::FETCH_OBJ);
+$driverName = $driverData ? $driverData->Name : '';
+
+$sql="SELECT * from tblbook  where Status='Approved' && AssignTo=:driverName";
 $query = $dbh -> prepare($sql);
-$query-> bindParam(':did', $did, PDO::PARAM_STR);
+$query-> bindParam(':driverName', $driverName, PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 

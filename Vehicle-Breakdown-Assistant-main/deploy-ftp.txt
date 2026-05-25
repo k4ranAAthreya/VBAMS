@@ -1,0 +1,10 @@
+open ftp.gamer.gd
+if0_42013470
+bGOqmJFSHJ
+cd public_html
+mkdir vehicleassitancems
+cd vehicleassitancems
+binary
+lcd "C:\xampp\htdocs\final VBAMS - Copy\final VBAMS - Copy\karan clone - Copy\Vehicle-Breakdown-Assistant-main\vehicleassitancems"
+mput *
+quit

@@ -69,16 +69,7 @@ $query->execute();
                                         <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                               <th>S.No</th>
-                                        <th>Driver ID</th>
-                                        <th>Name</th>
-                                        <th>MobileNumber</th>
-                                        <th>Email</th>
-                                        <th>Action</th>
-                                            </tr>
-                                        </tfoot>
+                                      
                                         <tbody>
                                             <tr>
                                                 <?php

@@ -1,9 +1,9 @@
 <?php 
 // DB credentials.
 define('DB_HOST','localhost');
-define('DB_USER','root');
+define('DB_USER','if0_42013470');
 define('DB_PASS','');
-define('DB_NAME','vehassitancemsdb');
+define('DB_NAME','if0_42013470');
 // Establish database connection.
 try
 {

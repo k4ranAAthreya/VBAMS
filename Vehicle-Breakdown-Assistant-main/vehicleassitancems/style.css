@@ -738,7 +738,7 @@ p.error {
 }
 .layer-1-4 a.title-4,
 .layer-2-4 a.title-4 {
-    color: #ed1d50;
+    color: #ed1d50 !important;
     padding: 15px 35px;
     background-color: #fff;
     border-radius: 5px;
@@ -746,7 +746,11 @@ p.error {
     font-weight: 600;
     text-transform: capitalize;
     display: inline-block;
-    animation: 0.6s ease-in-out 2s normal backwards 1 running rollIn;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: 0.6s ease-in-out 2s rollIn forwards;
 }
 .layer-1-4 a.title-4:hover,
 .layer-2-4 a.title-4:hover {

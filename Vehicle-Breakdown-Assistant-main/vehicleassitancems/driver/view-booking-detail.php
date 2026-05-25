@@ -14,21 +14,21 @@ if(isset($_POST['submit']))
    $remark=$_POST['remark'];
    $assignee=$_POST['assignee'];
 
-    $sql="insert into tbltracking(BookingNumber,Remark,Status) value(:bookid,:remark,:status)";
+    $sql="INSERT INTO tbltracking(BookingNumber,Remark,Status,UpdationDate) VALUES(:bookid,:remark,:status,NOW())";
     $query=$dbh->prepare($sql);
-$query->bindParam(':bookid',$bookid,PDO::PARAM_STR); 
-    $query->bindParam(':remark',$remark,PDO::PARAM_STR); 
-    $query->bindParam(':status',$status,PDO::PARAM_STR); 
+$query->bindParam(':bookid',$bookid,PDO::PARAM_STR);
+    $query->bindParam(':remark',$remark,PDO::PARAM_STR);
+    $query->bindParam(':status',$status,PDO::PARAM_STR);
        $query->execute();
-      $sql= "update tblbook set Status=:status,Remark=:remark where ID=:eid";
+      $sql= "update tblbook set Status=:status,Remark=:remark,UpdationDate=NOW() where ID=:eid";
 
     $query=$dbh->prepare($sql);
-   
+
 $query->bindParam(':status',$status,PDO::PARAM_STR);
 $query->bindParam(':remark',$remark,PDO::PARAM_STR);
 $query->bindParam(':eid',$eid,PDO::PARAM_STR);
  $query->execute();
- echo '<script>alert("Remark has been updated")</script>';
+ echo '<script>alert("Booking status has been updated successfully")</script>';
  echo "<script>window.location.href ='total-request.php'</script>";
 }
 
@@ -102,14 +102,27 @@ foreach($results as $row)
     <td><?php  echo $row->Destination;?></td>
     <th>Pickup Location</th>
     <td><?php  echo $row->PickupLoc;?></td>
-    
+
+  </tr>
+  <tr>
+    <th>Location Coordinates</th>
+    <td colspan="3">
+      <?php
+        if(!empty($row->Latitude) && !empty($row->Longitude)) {
+          echo "Latitude: " . htmlentities($row->Latitude) . "<br>";
+          echo "Longitude: " . htmlentities($row->Longitude);
+        } else {
+          echo "Location coordinates not available";
+        }
+      ?>
+    </td>
   </tr>
   <tr>
     <th>Pickup Time</th>
     <td><?php  echo $row->PickupTime;?></td>
     <th>Pickup Date</th>
     <td><?php  echo $row->PickupDate;?></td>
-    
+
   </tr>
   <tr>
     <th >Assign To</th>

@@ -64,17 +64,7 @@ $tdate=$_POST['todate'];
                                         <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tfoot>
-                                            <tr>
-                                              <th>S.No</th>
-                                        <th>Booking Number</th>
-                                        <th>Name</th>
-                                        <th>Mobile Number</th>
-                                        <th>Email</th>
-                                    <th>Status</th>
-                                        <th>Action</th>
-                                            </tr>
-                                        </tfoot>
+                                        
                                         <tbody>
                                             <tr>
                                                <?php

@@ -66,6 +66,13 @@ foreach($results as $row)
                       
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript:void(0)" class="has-arrow"><i class="ti-money"></i><span>💳 Payments</span></a>
+                    <ul>
+                        <li><a href="payment-admin-demo.php">Manage Payments</a></li>
+                        <li><a href="payment-admin-demo.php">Advance Payments</a></li>
+                    </ul>
+                </li>
                
             </ul>            
         </nav>

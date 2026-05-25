@@ -16,9 +16,6 @@ if (strlen($_SESSION['vamsid']==0)) {
 
 <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
 <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="../assets/vendor/charts-c3/plugin.css"/>
-<link rel="stylesheet" href="../assets/vendor/jvectormap/jquery-jvectormap-2.0.3.css"/>
 <link rel="stylesheet" href="../assets/css/main.css" type="text/css">
 </head>
 <body class="theme-indigo">
@@ -42,9 +39,17 @@ if (strlen($_SESSION['vamsid']==0)) {
                         <div class="body">
                             <?php 
                          $did=$_SESSION['vamsdid'];
-$sql ="SELECT * from  tblbook where Status='Approved' && AssignTo=:did ";
+// Get driver name from session using driver ID
+$driverSql = "SELECT Name FROM tbldriver WHERE DriverID = :did LIMIT 1";
+$driverQuery = $dbh->prepare($driverSql);
+$driverQuery->bindParam(':did', $did, PDO::PARAM_STR);
+$driverQuery->execute();
+$driverData = $driverQuery->fetch(PDO::FETCH_OBJ);
+$driverName = $driverData ? $driverData->Name : '';
+
+$sql ="SELECT * from tblbook where Status='Approved' && AssignTo=:driverName ";
 $query = $dbh -> prepare($sql);
-$query-> bindParam(':did', $did, PDO::PARAM_STR);
+$query-> bindParam(':driverName', $driverName, PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 $totnewrequest=$query->rowCount();
@@ -61,9 +66,17 @@ $totnewrequest=$query->rowCount();
                         <div class="body">
                              <?php 
                          $did=$_SESSION['vamsdid'];
-$sql ="SELECT * from  tblbook where Status='On The Way' && AssignTo=:did ";
+// Get driver name from session using driver ID
+$driverSql = "SELECT Name FROM tbldriver WHERE DriverID = :did LIMIT 1";
+$driverQuery = $dbh->prepare($driverSql);
+$driverQuery->bindParam(':did', $did, PDO::PARAM_STR);
+$driverQuery->execute();
+$driverData = $driverQuery->fetch(PDO::FETCH_OBJ);
+$driverName = $driverData ? $driverData->Name : '';
+
+$sql ="SELECT * from  tblbook where Status='On The Way' && AssignTo=:driverName ";
 $query = $dbh -> prepare($sql);
-$query-> bindParam(':did', $did, PDO::PARAM_STR);
+$query-> bindParam(':driverName', $driverName, PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 $tototwrequest=$query->rowCount();
@@ -79,9 +92,17 @@ $tototwrequest=$query->rowCount();
                         <div class="body">
                             <?php 
                          $did=$_SESSION['vamsdid'];
-$sql ="SELECT * from  tblbook where Status='Completed' && AssignTo=:did ";
+// Get driver name from session using driver ID
+$driverSql = "SELECT Name FROM tbldriver WHERE DriverID = :did LIMIT 1";
+$driverQuery = $dbh->prepare($driverSql);
+$driverQuery->bindParam(':did', $did, PDO::PARAM_STR);
+$driverQuery->execute();
+$driverData = $driverQuery->fetch(PDO::FETCH_OBJ);
+$driverName = $driverData ? $driverData->Name : '';
+
+$sql ="SELECT * from  tblbook where Status='Completed' && AssignTo=:driverName ";
 $query = $dbh -> prepare($sql);
-$query-> bindParam(':did', $did, PDO::PARAM_STR);
+$query-> bindParam(':driverName', $driverName, PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 $totcomprequest=$query->rowCount();
@@ -102,12 +123,6 @@ $totcomprequest=$query->rowCount();
 <!-- Core -->
 <script src="../assets/bundles/libscripts.bundle.js"></script>
 <script src="../assets/bundles/vendorscripts.bundle.js"></script>
-
-<script src="../assets/bundles/c3.bundle.js"></script>
-<script src="../assets/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
-
 <script src="../assets/js/theme.js"></script>
-<script src="../assets/js/pages/index.js"></script>
-<script src="../assets/js/pages/todo-js.js"></script>
 </body>
 </html><?php } ?>

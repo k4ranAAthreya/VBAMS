@@ -89,9 +89,17 @@ $sdata=$_POST['searchdata'];
                                             <tr>
                                                <?php
                                                $did=$_SESSION['vamsdid'];
-$sql="SELECT * from  tblbook where BookingNumber like '%$sdata%' || Name like '%$sdata%' || PhoneNumber like '%$sdata%' && Status='Approved' && AssignTo=:did";
+// Get driver name from session using driver ID
+$driverSql = "SELECT Name FROM tbldriver WHERE DriverID = :did LIMIT 1";
+$driverQuery = $dbh->prepare($driverSql);
+$driverQuery->bindParam(':did', $did, PDO::PARAM_STR);
+$driverQuery->execute();
+$driverData = $driverQuery->fetch(PDO::FETCH_OBJ);
+$driverName = $driverData ? $driverData->Name : '';
+
+$sql="SELECT * from  tblbook where BookingNumber like '%$sdata%' || Name like '%$sdata%' || PhoneNumber like '%$sdata%' && Status='Approved' && AssignTo=:driverName";
 $query = $dbh -> prepare($sql);
-$query-> bindParam(':did', $did, PDO::PARAM_STR);
+$query-> bindParam(':driverName', $driverName, PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 

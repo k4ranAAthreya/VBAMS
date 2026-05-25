@@ -16,9 +16,6 @@ if (strlen($_SESSION['vamsaid']==0)) {
 
 <link rel="stylesheet" href="../assets/vendor/themify-icons/themify-icons.css">
 <link rel="stylesheet" href="../assets/vendor/fontawesome/css/font-awesome.min.css">
-
-<link rel="stylesheet" href="../assets/vendor/charts-c3/plugin.css"/>
-<link rel="stylesheet" href="../assets/vendor/jvectormap/jquery-jvectormap-2.0.3.css"/>
 <link rel="stylesheet" href="../assets/css/main.css" type="text/css">
 </head>
 <body class="theme-indigo">
@@ -138,8 +135,22 @@ $totdriver=$query1->rowCount();
                         </div>
                     </div>
                 </div>
-               
-              
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="card widget_2 big_icon email">
+                        <div class="body">
+                            <?php 
+                        $sql2 ="SELECT * from tblpayments where status='captured'";
+$query2 = $dbh -> prepare($sql2);
+$query2->execute();
+$results2=$query2->fetchAll(PDO::FETCH_OBJ);
+$totpayments=$query2->rowCount();
+?>
+                            <h6>💳 Advance Payments Received</h6>
+                            <h2><?php echo htmlentities($totpayments);?></h2>
+                           <a href="payment-admin-demo.php"><small>Manage Payments</small></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>    
@@ -148,12 +159,6 @@ $totdriver=$query1->rowCount();
 <!-- Core -->
 <script src="../assets/bundles/libscripts.bundle.js"></script>
 <script src="../assets/bundles/vendorscripts.bundle.js"></script>
-
-<script src="../assets/bundles/c3.bundle.js"></script>
-<script src="../assets/bundles/jvectormap.bundle.js"></script> <!-- JVectorMap Plugin Js -->
-
 <script src="../assets/js/theme.js"></script>
-<script src="../assets/js/pages/index.js"></script>
-<script src="../assets/js/pages/todo-js.js"></script>
 </body>
 </html><?php } ?>

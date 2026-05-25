@@ -65,14 +65,7 @@ $tdate=$_POST['todate'];
                                             </tr>
                                         </thead>
                                         <tfoot>
-                                            <tr>
-                                              <th>S.No</th>
-                                              <th>Employee ID</th>
-                                        <th>Name</th>
-                                       <th>Work Assign</th>
-                                        <th>Completed Work</th>
-                                        <th>Remaining Work</th>
-                                            </tr>
+                                           
                                         </tfoot>
                                         <tbody>
                                             <tr>
